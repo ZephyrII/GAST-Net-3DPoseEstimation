@@ -7,8 +7,16 @@ from common.quaternion import qort, qinverse
 
 def normalize_screen_coordinates(X, w, h):
     assert X.shape[-1] == 2
-
-    # Normalize so that [0, w] is mapped to [-1, 1], while preserving the aspect ratio
+    # h = np.expand_dims(h, -1)
+    # w = np.expand_dims(w, -1)
+    # h = np.expand_dims(h, -1)
+    # w = np.expand_dims(w, -1)
+    # sub = h/w
+    # sub = np.concatenate([np.ones_like(sub), sub], axis=-1)
+    # # w=1920
+    # # h=1080
+    # # Normalize so that [0, w] is mapped to [-1, 1], while preserving the aspect ratio
+    # return X/w*2 - sub
     return X/w*2 - [1, h/w]
 
 
